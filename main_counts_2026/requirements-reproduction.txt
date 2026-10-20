@@ -1,0 +1,4 @@
+# Versions used to reproduce the October figures; Python 3.13.
+requests==2.32.5
+matplotlib==3.10.7
+numpy==2.4.4

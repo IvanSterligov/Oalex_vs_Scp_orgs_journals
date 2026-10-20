@@ -1,0 +1,37 @@
+# Credentials at any directory depth. Never commit real values in examples.
+.env
+.env.*
+!.env.example
+secrets.txt
+secrets.*
+keys.txt
+keys.*
+key.txt
+api_key*
+api-key*
+api_keys*
+credentials.*
+*.pem
+*.key
+
+# Python environments and temporary files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.tmp/
+*.tmp
+
+# New collection runs and potentially sensitive diagnostic responses
+runs/
+*_pages.jsonl
+*_stop.json
+partitions/
+main_counts_2026/input_manifest.json
+main_counts_2026/pilot_validation.json
+main_counts_2026/*_run_summary.json
+main_counts_2026/annual_counts.csv
+
+# Explicitly released, credential-scanned Figure 8 response evidence
+!main_counts_2026/journal_institution_coverage/openalex_pages.jsonl

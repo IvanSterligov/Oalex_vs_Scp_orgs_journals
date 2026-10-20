@@ -1,0 +1,117 @@
+{
+  "verified_at": "2026-10-02T13:27:31.870990+00:00",
+  "years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "organisations": 220,
+  "journals": 639,
+  "complete": true,
+  "databases": {
+    "openalex": {
+      "partitions": 1320,
+      "annual_link_totals": {
+        "2020": 36028,
+        "2021": 37261,
+        "2022": 34621,
+        "2023": 35409,
+        "2024": 37443,
+        "2025": 39515
+      },
+      "cells": 843480,
+      "count_methods": {
+        "group_by": 1320
+      }
+    },
+    "scopus": {
+      "partitions": 1540,
+      "annual_link_totals": {
+        "2020": 37867,
+        "2021": 39408,
+        "2022": 37454,
+        "2023": 38364,
+        "2024": 40752,
+        "2025": 42274
+      },
+      "cells": 843480,
+      "count_methods": {
+        "record_tally": 1540
+      }
+    }
+  },
+  "collector_sha256": "56964e4d1d31ee695a6ece6c447596c2020fb440bbb9c032df411dd6b5e79e38",
+  "exports_cross_checked": true,
+  "combined_rows": 843480,
+  "api_usage": {
+    "scopus": {
+      "logged_requests": 10373,
+      "http_statuses": {
+        "200": 10372,
+        "403": 1
+      },
+      "requests_by_key_number": {
+        "1": 3349,
+        "2": 3529,
+        "3": 3495
+      },
+      "last_quota_headers": {
+        "1": {
+          "x-els-status": "OK",
+          "x-ratelimit-limit": "20000",
+          "x-ratelimit-remaining": "12515",
+          "x-ratelimit-reset": "1791542581"
+        },
+        "2": {
+          "x-els-status": "OK",
+          "x-ratelimit-limit": "20000",
+          "x-ratelimit-remaining": "16469",
+          "x-ratelimit-reset": "1791548764"
+        },
+        "3": {
+          "x-els-status": "OK",
+          "x-ratelimit-limit": "20000",
+          "x-ratelimit-remaining": "16507",
+          "x-ratelimit-reset": "1791548764"
+        }
+      },
+      "credits": null
+    },
+    "openalex": {
+      "logged_requests": 1377,
+      "http_statuses": {
+        "200": 1377
+      },
+      "requests_by_key_number": {
+        "1": 1377
+      },
+      "last_quota_headers": {
+        "1": {
+          "x-ratelimit-cost-usd": "0.0001",
+          "x-ratelimit-credits-used": "1",
+          "x-ratelimit-limit": "10000",
+          "x-ratelimit-limit-usd": "1",
+          "x-ratelimit-onetime-remaining": "0",
+          "x-ratelimit-prepaid-remaining-usd": "0",
+          "x-ratelimit-remaining": "7837",
+          "x-ratelimit-remaining-usd": "0.7837",
+          "x-ratelimit-reset": "40771"
+        }
+      },
+      "credits": 1377
+    }
+  },
+  "artifact_sha256": {
+    "annual_counts.csv": "0cf828a59dbc9d5db7a1a11e9af72c114b02ba683ff8bf0cd021f6f3ffa5dacb",
+    "openalex_counts.csv": "97577e0873a83cddfec7f917efcd51283dcf5a81737e1ef5c8557963e4a1f403",
+    "scopus_counts.csv": "effd18cbf86deec41ad7fae63289076f7856f7e04238114ce98b5ab3e176bd2d",
+    "journals.csv": "7085e2ee754bcacfdc8cf7ea9fec557c08706f489dc866bde145fd1505a1be8e",
+    "orgs.csv": "d81829ff25dcaf3045ca76e8ce5eb8e492963a179859a6a9f43242a3e8c1fffb",
+    "pilot_validation.json": "f369106eea66cda28275b2c28d172b46c303a5982c61ec0279ddd0b9548a6b53"
+  },
+  "final_verified_at": "2026-10-02T13:29:26.568464+00:00",
+  "credential_scan_passed": true
+}

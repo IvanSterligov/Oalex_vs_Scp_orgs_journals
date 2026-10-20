@@ -1,0 +1,60 @@
+{
+  "completed_at_utc": "2026-10-20T11:01:04.406965+00:00",
+  "complete": true,
+  "rows": 3834,
+  "journal_year_counts_sha256": "53d8ed2437d02cb79fc5bae2e3c5ca27475ce529ae35863fa09cc95af66b933d",
+  "journal_sha256": "7085e2ee754bcacfdc8cf7ea9fec557c08706f489dc866bde145fd1505a1be8e",
+  "request_attempts": 57,
+  "http_statuses": {
+    "network_error": 3,
+    "200": 54
+  },
+  "reported_credits_used": 54.0,
+  "first_request_utc": "2026-10-20T10:59:36.173466+00:00",
+  "last_request_utc": "2026-10-20T11:00:50.762815+00:00",
+  "last_quota_headers": {
+    "x-ratelimit-cost-usd": "0.0001",
+    "x-ratelimit-credits-used": "1",
+    "x-ratelimit-limit": "10000",
+    "x-ratelimit-limit-usd": "1",
+    "x-ratelimit-onetime-remaining": "0",
+    "x-ratelimit-prepaid-remaining-usd": "0",
+    "x-ratelimit-remaining": "9946",
+    "x-ratelimit-remaining-usd": "0.9946",
+    "x-ratelimit-reset": "46752"
+  },
+  "validation_journals": [
+    {
+      "source": "S72455244",
+      "title": "Leonardo Music Journal",
+      "all_six_years_match": true
+    },
+    {
+      "source": "S171424506",
+      "title": "European Accounting Review",
+      "all_six_years_match": true
+    },
+    {
+      "source": "S81410195",
+      "title": "Manufacturing & Service Operations Management",
+      "all_six_years_match": true
+    },
+    {
+      "source": "S2764671299",
+      "title": "Nature Plants",
+      "all_six_years_match": true
+    },
+    {
+      "source": "S110447773",
+      "title": "Cell",
+      "all_six_years_match": true
+    },
+    {
+      "source": "S64187185",
+      "title": "Nature Communications",
+      "all_six_years_match": true
+    }
+  ],
+  "collector_sha256": "61af8071278d0aa9b86d187ae672a972950206cec80e59a16369a658ce78d4c8",
+  "shared_client_sha256": "56964e4d1d31ee695a6ece6c447596c2020fb440bbb9c032df411dd6b5e79e38"
+}

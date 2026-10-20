@@ -1,115 +1,73 @@
-# OpenAlex and Scopus data collection
+# OpenAlex and Scopus: institutional and journal coverage
 
-This repository is supplementary material for the paper *Comparison of OpenAlex
-and Scopus coverage of German institutions’ publications in top-tier journals*
-by Ivan Sterligov and Andrey Lovakov, as presented at the STI 2026 conference
-in Antwerp.
+Supplementary code and data for *Comparison of OpenAlex and Scopus coverage of
+German institutions’ publications in top-tier journals* by Ivan Sterligov and
+Andrey Lovakov, presented at STI 2026 in Antwerp.
 
-This folder contains the inputs, code, and reference data used to collect yearly
-publication counts for 220 German research organisations and 712 journals. The
-collection years are 2020–2024. The scripts reproduce data collection, not the
-paper's statistical analysis.
+The **October 2026 recollection** is in [`main_counts_2026/`](main_counts_2026/README.md):
+220 German research organisations, 639 selected journals, publication years
+2020–2025, all document types. Both databases were recollected on **2 October
+2026**. The OpenAlex analysis of papers **without any institution links** was
+collected separately on **20 October 2026**.
 
-## Files
+The earlier 712-journal, 2020–2024 collectors and historical `data/OpenData.xlsx`
+remain available; see [the earlier workflow](LEGACY_COLLECTION.md). Its input
+files in `data/` describe that earlier cohort, not the 639-journal October cohort.
+The released scripts collect counts and reproduce the documented figures; they
+do not implement every analysis in the paper.
 
-- `openalex_counts.py` collects OpenAlex counts.
-- `scopus_counts.py` collects Scopus counts.
-- `data/orgs.csv` contains the 220 organisations, OpenAlex IDs, and Scopus
-  lineage queries.
-- `data/journals.csv` maps the 712 OpenAlex source IDs to Scopus source IDs.
-- `data/OpenData.xlsx` is the released historical count dataset.
-- `tests/test_collectors.py` tests query parsing, zero handling, key rotation,
-  and checkpoint/resume behavior without calling either API.
+## Setup
 
-## Requirements
-
-- Python 3.10 or newer
-- packages listed in `requirements.txt`
-- an OpenAlex API key
-- one or more Scopus API keys with access to the Scopus Search API
-
-Create an environment and install the dependencies:
+Use Python 3.13 for the tested October reproduction environment:
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\python -m pip install -r requirements.txt
-```
-
-Provide credentials through environment variables. Values are read at runtime
-and are never written to outputs or logs:
-
-```powershell
-$env:OPENALEX_API_KEY = "your-key"
-$env:SCOPUS_API_KEYS = "first-key,second-key"
-```
-
-`SCOPUS_API_KEYS` may contain one key or a comma-separated list. The Scopus
-collector rotates to the next key only when the API reports quota exhaustion.
-
-## Small test collection
-
-Run the unit tests first:
-
-```powershell
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m pip install -r main_counts_2026/requirements-reproduction.txt
 python -m unittest discover -s tests -v
+python -m unittest discover -s main_counts_2026 -p "test_*.py" -v
 ```
 
-Then collect a small 3 × 3 subset:
+`requirements.txt` contains compatible dependency ranges; the second file pins
+the three dependencies used for the October collectors and figures. No new
+service or framework is required.
+
+## Reproduce released figures without API access
 
 ```powershell
-python openalex_counts.py --max-orgs 3 --max-journals 3 --output openalex_smoke.tsv
-python scopus_counts.py --max-orgs 3 --max-journals 3 --output scopus_smoke.tsv
+python main_counts_2026/plot_linkage.py
+python main_counts_2026/journal_institution_coverage.py plot
+python main_counts_2026/journal_institution_coverage.py histograms
+python main_counts_2026/journal_institution_coverage.py verify
 ```
 
-Both output files contain one row per organisation and year. Journal columns
-use OpenAlex source IDs in both files so that the matrices can be compared
-directly. `data/journals.csv` supplies the corresponding Scopus source IDs.
+The repository includes both compact institutional count matrices and the
+journal-wide count table with its compact OpenAlex response evidence. The first
+figure is the ratio of summed OpenAlex to Scopus **institutional counts**. Figure
+8 measures the presence of **any institutional link worldwide**, with no filter
+for the 220 organisations. These are different denominators.
 
-## Full collection
+## Collect fresh counts
 
-From this folder, run:
+Set credentials locally, then follow the [October collection instructions](main_counts_2026/README.md):
 
 ```powershell
-python openalex_counts.py --output openalex_counts.tsv
-python scopus_counts.py --output scopus_counts.tsv
+$env:OPENALEX_API_KEY = "your-openalex-key"
+$env:SCOPUS_API_KEYS = "first-scopus-key,second-scopus-key"
 ```
 
-OpenAlex supports grouping by publication year. The OpenAlex script therefore
-uses one request for each organisation–journal pair and fills absent year
-groups with zero. For 220 organisations and 712 journals this is 156,640
-requests instead of 783,200 separate yearly requests.
+Only the credential for the selected database is required. Figure 8 needs only
+OpenAlex. Use the documented `runs/` directories for fresh collection so the
+released data stay available. Live databases change, so fresh counts can differ.
 
-The free Scopus Search API does not provide access to publication-year facets.
-The Scopus script first requests the total for 2020–2024. If that total is zero,
-all five years are set to zero. If it is positive, the script requests the five
-individual years. A failed request is left missing; it is never converted to a
-zero.
+`.gitignore` excludes `.env` files, `secrets.txt`, `keys.txt`, other common
+credential files, environments, and new collection caches. Authentication is
+sent in request headers; the October client redacts credential values from
+response logs. The included historical response evidence was scanned before
+release. Never paste actual credentials into scripts, documentation, command
+arguments, or tracked files; ignoring a file does not remove it from existing
+Git history.
 
-The scripts write an atomic checkpoint after each batch. If a daily OpenAlex
-budget or all weekly Scopus quotas are exhausted, rerun the same command with
-`--resume` after the quota resets:
-
-```powershell
-python openalex_counts.py --output openalex_counts.tsv --resume
-python scopus_counts.py --output scopus_counts.tsv --resume
-```
-
-Do not change the input files between an interrupted run and its resume.
-
-## Method notes
-
-- OpenAlex institution counts use `authorships.institutions.lineage`.
-- Journal membership uses `primary_location.source.id`, which represents the
-  source that published the work.
-- Scopus organisation searches use the supplied lineage expressions and
-  `SOURCE-ID` journal filters.
-- No publication-type filter is applied, matching the paper's method.
-- Live databases are updated continuously, so new collections may not exactly
-  equal the historical values in `OpenData.xlsx`.
-
-Current API documentation:
-
-- OpenAlex authentication: https://help.openalex.org/api/authentication/
-- OpenAlex grouping: https://help.openalex.org/api/grouping/
-- Scopus Search API: https://dev.elsevier.com/documentation/SCOPUSSearchAPI.wadl
-- Elsevier quotas: https://dev.elsevier.com/api_key_settings.html
+See [the October README](main_counts_2026/README.md) for query definitions,
+request limits, validation, output schemas, provenance, and exact commands.

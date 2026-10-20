@@ -1,0 +1,23 @@
+{
+  "journal_sha256": "7085e2ee754bcacfdc8cf7ea9fec557c08706f489dc866bde145fd1505a1be8e",
+  "journals": 639,
+  "years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "source_field": "primary_location.source.id",
+  "corpus": "core",
+  "document_types": "all",
+  "institution_scope": "any institution worldwide; no organisation filter",
+  "unlinked_filter": {
+    "column_id": "institutions_distinct_count",
+    "value": 0
+  },
+  "max_attempts": 60,
+  "main_request_ceiling": 48,
+  "validation_request_ceiling": 12
+}

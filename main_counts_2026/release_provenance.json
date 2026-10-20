@@ -1,0 +1,65 @@
+{
+  "release_date": "2026-10-20",
+  "original_count_collection_date": "2026-10-02",
+  "original_global_institution_link_collection_date": "2026-10-20",
+  "original_local_script_sha256": {
+    "collect.py": "56964e4d1d31ee695a6ece6c447596c2020fb440bbb9c032df411dd6b5e79e38",
+    "journal_institution_coverage.py": "fe758313546ec332b508efae766d1b494950703fefdb07e4800ba08f8b3879cb",
+    "plot_linkage.py": "be76b643c44625d7449f6adb0fcf813a51fda1853a65685d6b932f03a93f560f",
+    "test_collect.py": "313718e6e681dce2769630e50b58c0ffc6dfe05f17e1ea53b8cde1dd3724e5dd"
+  },
+  "public_adaptations": [
+    "Use released org/journal snapshots and the actual pilot selection instead of private workspace exports.",
+    "Add separate run/output directories while retaining existing query, paging and validation methods.",
+    "Require only the selected database credential; preserve header authentication and log redaction.",
+    "Include combined-row count and available export hashes in newly generated validation summaries.",
+    "Write an explicit percent_unlinked column in fresh journal-level collections and verify it.",
+    "Preserve byte hashes across platforms through .gitattributes; retain original data CSV bytes."
+  ],
+  "verification": {
+    "legacy_unit_tests": 7,
+    "october_unit_tests": 15,
+    "api_requests_for_release_preparation": 0,
+    "offline_checks": [
+      "Regenerate both count matrices and the combined export from the original completed partitions; compare original hashes.",
+      "Reproduce institutional-count figure and Figure 8 plus histograms from released data.",
+      "Verify all 3834 journal-year rows against compact response buckets and independently recalculate statistics.",
+      "Check known credential values in release files, spreadsheet archive members and pre-existing Git history.",
+      "Verify clean staged checkout works without private workspace inputs and preserves file hashes."
+    ]
+  },
+  "released_file_sha256": {
+    "README.md": "cb73e8220af6d97e4adb206197f1fc7a464ec6b05cc95c2dc4423f7cc91d324d",
+    "collect.py": "bbc5cd9052e45d5284bad2f030a3e8e3d365bd27543dc7f2ae3e0819e5d09176",
+    "figure_openalex_vs_scopus_by_year.pdf": "f7157e594679f5c3ad299aa1042eafe7b57e046da71afd358bed54acce4510b8",
+    "figure_openalex_vs_scopus_by_year.png": "e8a0e1b18b9db3955fb9b9efe30134bcea98594136b62703faa62048a65107c4",
+    "figure_openalex_vs_scopus_by_year_data.csv": "cd54195433dcf486db8e163a1f3f2c6b71d151656c913a7fc36837821a36b78b",
+    "journal_institution_coverage.py": "79e039ff909e2f1641add6e8666b3daa70a36c4e3d52bbf764387b9cca3aebdb",
+    "journal_institution_coverage/CAPTION_AND_RESULTS.txt": "8e29b770b0aa0d9405a281aabb5306c7c0d262db7e75e7f9d7e2d82264e10c05",
+    "journal_institution_coverage/HISTOGRAM_CAPTION.txt": "22a243a3d4795078a1204c4be2fc7c0cac444dcca1f7a026a4abbe3145d0589e",
+    "journal_institution_coverage/README.md": "0a4b971efeccb88b330f84852600bc4bb02d20760020604901b886cfd29123d8",
+    "journal_institution_coverage/collection_summary.json": "67fc5d9166137c7de00537c196e3fe9baadcc195a70d5669851722caf22efa13",
+    "journal_institution_coverage/figure_journal_percent_linked_histograms.pdf": "eb789a5beb85a3a136f0a82fe38182932a2c03d428e9786c3f19a2c8e3aa0a21",
+    "journal_institution_coverage/figure_journal_percent_linked_histograms.png": "bc5103e3ae3dc565233fe3a2c868ef94e8691e2db4b82fcc10244fa362f13cff",
+    "journal_institution_coverage/figure_journal_percent_linked_histograms.svg": "36984de8d706f19ce63bb71aaaf495dcdd5a3d12dc1be02d6a108ec6e887b994",
+    "journal_institution_coverage/figure_journal_percent_linked_histograms_data.csv": "e6b47bfa211085b463ee365985f0284245ab791816cfef7b43694acf91b00f04",
+    "journal_institution_coverage/figure_papers_with_institutions.pdf": "b02a496ffeb8f68ad7882407f0945f455a1e1a8837c09b43412a55e8c5184187",
+    "journal_institution_coverage/figure_papers_with_institutions.png": "6e6d1a51a53c00a93358467bed190730853c2ec29eb2d27bafa6a0a2016d971c",
+    "journal_institution_coverage/figure_papers_with_institutions.svg": "dc19f148812d5fbc3305b6445850a1f1a9bf7ea3bb9357cc90765025253b943c",
+    "journal_institution_coverage/figure_papers_with_institutions_data.csv": "a0366e3e33974bba2099ee0372c8b270d07309cb8e538cc9eb53c7ed6272e5db",
+    "journal_institution_coverage/input_manifest.json": "6f8604c8e92546e021cf14b593b4bb1b63659c28e14041932f558fcc92111c41",
+    "journal_institution_coverage/journal_year_counts.csv": "53d8ed2437d02cb79fc5bae2e3c5ca27475ce529ae35863fa09cc95af66b933d",
+    "journal_institution_coverage/openalex_pages.jsonl": "22d42fc1357391f1c560afe60fc7f821c39a6efef108a0270b764f61e68fb935",
+    "journal_institution_coverage/verification_summary.json": "caf19db518856ce2bd89332cb6644d0027e0257103b9a1a07a92b7f5f52235af",
+    "journals.csv": "7085e2ee754bcacfdc8cf7ea9fec557c08706f489dc866bde145fd1505a1be8e",
+    "openalex_counts.csv": "97577e0873a83cddfec7f917efcd51283dcf5a81737e1ef5c8557963e4a1f403",
+    "orgs.csv": "d81829ff25dcaf3045ca76e8ce5eb8e492963a179859a6a9f43242a3e8c1fffb",
+    "pilot_plan.json": "5be73b8f66dc4316d000d5a6b4b6aa4bce4ddfdd019f7cb81773128fdb8f8bb2",
+    "plot_linkage.py": "0eb0d6d323a08c897c95ac9aa037deee45aaaf13f1a677f81b1b26ba3c557107",
+    "requirements-reproduction.txt": "459655c90a49fa3762ae6de5f5896715bcf48386af364fb1ca4352befeeeaa02",
+    "scopus_counts.csv": "effd18cbf86deec41ad7fae63289076f7856f7e04238114ce98b5ab3e176bd2d",
+    "test_collect.py": "313718e6e681dce2769630e50b58c0ffc6dfe05f17e1ea53b8cde1dd3724e5dd",
+    "test_release.py": "add90aaf76b63c83e1ceb198f0ac974b6a2bde2f0e155a6b50852c67477c0103",
+    "validation_summary.json": "d79928241be11ece0556dc74286ede04d870d3219f9616624b2b40a21cd5e28a"
+  }
+}
